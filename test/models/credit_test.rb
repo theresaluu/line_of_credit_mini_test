@@ -1,13 +1,6 @@
 require 'test_helper'
 
 class CreditTest < ActiveSupport::TestCase
-  
-  def setup
-    @credit = Credit.new
-  end
-
-  def test_apr_is_required
-    @credit.valid?
-    assert_includes(@credit.errors[:apr], "can't be blank")
-  end
+  should validate_presence_of(:apr)
+  should validate_presence_of(:line_max)
 end

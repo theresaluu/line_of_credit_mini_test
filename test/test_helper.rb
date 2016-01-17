@@ -34,3 +34,14 @@ class ActiveRecord::Base
   end
 end
 ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
+
+#Shoulda Matchers Settings
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    # Choose a test framework:
+    with.test_framework :minitest
+    with.test_framework :minitest_4
+
+    with.library :rails
+  end
+end
