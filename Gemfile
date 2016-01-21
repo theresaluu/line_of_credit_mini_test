@@ -51,6 +51,7 @@ group :development do
   gem "guard-minitest", :require => false
   gem "rb-fsevent", :require => false
   gem "terminal-notifier-guard", :require => false
+  gem "pry-rails"
 end
 
 group :test do
