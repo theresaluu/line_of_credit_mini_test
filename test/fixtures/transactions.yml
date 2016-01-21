@@ -3,9 +3,9 @@
 one:
   amount: 1.5
   day: 1
-  type: 
+  withdrawal: false 
 
 two:
   amount: 1.5
   day: 1
-  type: 
+  withdrawal: true

@@ -1,8 +1,13 @@
 class Transaction < ActiveRecord::Base
+  attr_accessor :amount, :day, :withdrawal
+
   validates :amount, presence: true
   validates :day, presence: true
-  validates :type, presence: true
+  validates :withdrawal, presence: true
 
-  attr_accessor :amount, :day, :type
   belongs_to :credit
+
+  scope :withdraws, ->{ where(withdrawal: true)}
+  scope :deposits, ->{where(withdrawal: false)}
+
 end
