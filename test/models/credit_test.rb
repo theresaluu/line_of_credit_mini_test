@@ -1,4 +1,5 @@
 require 'test_helper'
+
 class CreditTest < ActiveSupport::TestCase
 
   [:apr, :line_max].each do |param|
@@ -13,9 +14,29 @@ class CreditTest < ActiveSupport::TestCase
     @transactions = @line.transactions
   end
 
+  def test_interest_total
+    @transactions << Transaction.new({amount: 100.00, day: 0, withdrawal: true})
+    @transactions << Transaction.new({amount: 50.00, day: 15, withdrawal: false})
+
+    assert_equal(2.16, @line.interest_total)
+  end
+
+  def test_current_balance
+    @transactions << Transaction.new({amount: 100.00, day: 0, withdrawal: true})
+    @transactions << Transaction.new({amount: 50.00, day: 15, withdrawal: false})
+    @transactions << Transaction.new({amount: 100.00, day: 20, withdrawal: true})
+    @transactions << Transaction.new({amount: 50.00, day: 25, withdrawal: false})
+
+    assert_equal(100, @line.current_balance)
+  end
+
   def test_grand_total
-    @transactions << Transaction.new({amount: 200.00, day: 0, withdrawal: true})
-    assert_equal(205.75, @line.grand_totals)
+    @transactions << Transaction.new({amount: 100.00, day: 0, withdrawal: true})
+    @transactions << Transaction.new({amount: 50.00, day: 15, withdrawal: false})
+    @transactions << Transaction.new({amount: 100.00, day: 20, withdrawal: true})
+    @transactions << Transaction.new({amount: 50.00, day: 25, withdrawal: false})
+
+    assert_equal(102.88, @line.grand_totals)
   end
 
 end
