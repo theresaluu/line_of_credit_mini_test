@@ -7,6 +7,8 @@ class TransactionTest < ActiveSupport::TestCase
     should validate_presence_of(param)
   end
 
+  should validate_numericality_of(:day).is_less_than(31)
+
   def setup
     @line = Credit.new({apr: 0.35, line_max: 1000})
     @transactions = @line.transactions
