@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120162719) do
+ActiveRecord::Schema.define(version: 20160125163308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,15 +21,16 @@ ActiveRecord::Schema.define(version: 20160120162719) do
     t.float    "line_max",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name",       null: false
   end
 
   create_table "transactions", force: :cascade do |t|
     t.integer  "credit_id"
-    t.float    "amount",     null: false
-    t.integer  "day",        null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "withdrawal"
+    t.float    "amount",                    null: false
+    t.integer  "day",                       null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.boolean  "withdrawal", default: true, null: false
   end
 
   add_index "transactions", ["credit_id"], name: "index_transactions_on_credit_id", using: :btree

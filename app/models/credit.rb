@@ -1,6 +1,7 @@
 class Credit < ActiveRecord::Base
   validates :apr, presence: true, numericality: {less_than: 1.0, greater_than: 0.0}
   validates :line_max, presence: true, numericality: {greater_than:0.0}
+  validates :name, presence: true
 
   attr_accessor :apr, :line_max, :interest_total, :current_balance, :grand_totals
 
