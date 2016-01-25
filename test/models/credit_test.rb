@@ -38,5 +38,4 @@ class CreditTest < ActiveSupport::TestCase
 
     assert_equal(102.88, @line.grand_totals)
   end
-
 end

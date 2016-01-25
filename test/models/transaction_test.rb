@@ -22,15 +22,16 @@ class TransactionTest < ActiveSupport::TestCase
 
   def test_exceeds_line_max
     @transactions << Transaction.new({amount: 1200.00, day: 0, withdrawal: true})
-    @denied_attempt = @transactions.first 
-    refute @denied_attempt.valid?
+    @denied_attempt = @transactions.first
+    @denied_attempt.valid? 
+    assert_equal(@denied_attempt.errors.keys, [:transaction])
   end
 
   def test_within_line_max
-    @transactions << Transaction.new({amount: 200.00, day: 0, withdrawal: true})
-    @transactions << Transaction.new({amount: 300.00, day: 0, withdrawal: false})
-    @deposit = @transactions[1]
-    assert @deposit.valid?
+    @transactions << Transaction.new({amount: 1200.00, day: 0, withdrawal: false})
+    @not_over_limit = @transactions.first
+    @not_over_limit.valid? 
+    refute_includes(@not_over_limit.errors.keys, [:transaction])
   end
 
 end

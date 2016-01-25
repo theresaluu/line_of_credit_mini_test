@@ -8,11 +8,12 @@ class Transaction < ActiveRecord::Base
 
   belongs_to :credit
 
+  private
   def within_credit_line_max
     return unless self.withdrawal
     line = self.credit
     if self.amount > line.line_max
-      self.errors.add(:amount, "exceeds credit line")
+      self.errors[:transaction] << "exceeds credit line"
     end
   end
 
