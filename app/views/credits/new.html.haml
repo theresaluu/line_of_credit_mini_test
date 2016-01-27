@@ -1,0 +1,9 @@
+=simple_form_for @credit do |f|
+  %p
+    =f.input :name, label: 'Name'
+  %p
+    =f.input :apr, label: 'Line of Credit APR', hint: 'up to 1.0'
+  %p
+    =f.input :line_max, label: 'Approved Line of Credit Maximum', placeholder: '1000.00'
+  %p
+    =f.submit
