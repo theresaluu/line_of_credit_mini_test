@@ -5,12 +5,11 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(transaction_params)
     @transaction.save
-
-    redirect_to credit_path()
+    redirect_to credit_path(@transaction.id)
   end
 
   private
   def transaction_params
-    params.permit(:amount, :day, :withdrawal)
+    params.require(:transaction).permit(:amount, :day, :withdrawal)
   end
 end
