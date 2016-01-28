@@ -13,6 +13,10 @@ class CreditsController < ApplicationController
     redirect_to @credit
   end
 
+  def show
+    @credit = Credit.find(params[:id])
+  end
+
   private
   def credit_params
     params.require(:credit).permit(:name, :apr, :line_max)
