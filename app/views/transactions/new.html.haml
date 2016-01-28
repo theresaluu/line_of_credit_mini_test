@@ -1,0 +1,9 @@
+=simple_form_for @transaction, url: transactions_path do |f|
+  %p
+    =f.input :amount, label: 'Amount'
+  %p
+    =f.input :day, label: 'day', placeholder:'10'
+  %p
+    =f.input :withdrawal, label: 'Withdrawal', as: :boolean, boolean_style: :inline
+  %p
+    =f.submit

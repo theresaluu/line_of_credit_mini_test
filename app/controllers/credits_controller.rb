@@ -15,6 +15,7 @@ class CreditsController < ApplicationController
 
   def show
     @credit = Credit.find(params[:id])
+    @transactions = @credit.transactions
   end
 
   private
