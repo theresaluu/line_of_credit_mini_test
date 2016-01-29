@@ -1,28 +1,27 @@
-== README
+== Line of Credit
+An exercise to step out of my normal, professional tech stack of Rails 3 on MongoDB with TestUnit.  This app allows me to practice with the following goodies:
+-Rails 4
+-Postgres
+-MiniTest with Shoulda-matchers
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Getting this up and running
+in terminal: 
+  -git clone git@github.com:theresaluu/line_of_credit_mini_test.git
+  -cd line_of_credit_mini_test
+  -bundle install
 
-Things you may want to cover:
+* Database
+run postgres server
+bundle exec rake db:create
+bundle exec rake db:migrate
 
-* Ruby version
+* Run the test suite
+bundle exec guard
 
-* System dependencies
+Items left in this app I would like to accomplish and practice with 
+[ ] Write and pass a test for exceeding the loan amounts
+[ ] UI styling with some sort of library
+[ ] Take out conditional rendering in the view- there is ruby in there and it is nasty
+[ ] Practice writing some integration tests
+[ ] Write an API version of this only
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
