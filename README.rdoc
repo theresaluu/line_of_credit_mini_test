@@ -19,9 +19,11 @@ run postgres server
 bundle exec guard
 
 =====Items left in this app I would like to accomplish and practice with 
+[] Pass the grand total test 
+  (previously fine until I added the stopgap for $0.00 due payments)
 [] Write and pass a test for exceeding the loan amounts
 [] UI styling with some sort of library
-[] Take out conditional rendering in the view- there is ruby in there and it is nasty
+[] Take out conditional rendering in the view- there's ruby there & it is nasty
 [] Practice writing some integration tests
 [] Write an API version of this only
 
