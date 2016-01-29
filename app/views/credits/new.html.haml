@@ -2,8 +2,8 @@
   %p
     =f.input :name, label: 'Name'
   %p
-    =f.input :apr, label: 'Line of Credit APR', hint: 'up to 1.0'
+    =f.input :apr, label: 'APR', placeholder: '0.15', hint: ' Any value 0.00 to  1.0'
   %p
-    =f.input :line_max, label: 'Approved Line of Credit Maximum', placeholder: '1000.00'
+    =f.input :line_max, label: 'Line of Credit Maximum', placeholder: '1000.00'
   %p
-    =f.submit
+    =f.submit 'Apply'

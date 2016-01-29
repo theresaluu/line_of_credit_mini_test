@@ -24,7 +24,11 @@ class Credit < ActiveRecord::Base
   end
 
   def grand_totals
-    self.interest_total + self.current_balance
+    if self.transactions.count > 0
+      self.interest_total + self.current_balance
+    else
+      "00.00".to_f
+    end
   end
 
   private

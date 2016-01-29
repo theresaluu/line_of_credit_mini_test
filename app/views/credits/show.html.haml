@@ -1,28 +1,48 @@
-%strong
-  Name
-= @credit.name 
+%h1
+  #{@credit.name}'s Line of Credit
 %p
-  %strong
-    APR
-  = @credit.apr
+  %span
+    %strong
+      APR
+    #{@credit.apr * 100}%
 %p
   %strong
     Maximum Line of Credit
-  = @credit.line_max
-
+  $#{sprintf('%.2f', @credit.line_max)}
+=link_to 'Return to Credit Dashboard', credits_path
+%hr
 %p
-  Transactions
-  %ul
-    -@transactions.each do |transaction|
-      %li
-        Amount
-        =transaction.amount
-        %br
-        Day of Month
-        =transaction.day
-        %br
-        Was this a withdrawal?
-        =transaction.withdrawal
+  %strong
+    Transactions
+  - if @transactions.exists?
+    %table
+      %tr
+        %th
+          Day of the Month
+        %th
+          Transaction Type
+        %th
+          Amount
+      -@transactions.each do |transaction|
+        %tr
+          %td
+            =transaction.day
+          %td
+            - if transaction.withdrawal
+              Withdrawal
+            - else
+              Deposit
+          %td
+            $#{sprintf('%.2f', transaction.amount)}
+  - else
+    %p
+      None Yet
 %p
   %button
     =link_to 'add transactions', new_credit_transaction_path(@credit.id)
+- if @transactions.exists?
+  %p
+    %strong
+      Grand Total Due At End of Month
+    %br
+    $#{sprintf('%.2f', @credit.grand_totals)}

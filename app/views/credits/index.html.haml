@@ -1,17 +1,27 @@
-All Lines of Credit
-%ul
+%h1
+  All Lines of Credit
+%hr
+%table
+  %tr
+    %th
+      Name
+    %th
+      APR
+    %th
+      Credit Max
+    %th
+      Due at End of Month
   -@credits.each do |credit|
-    %li
-      %p
-        %span
-          %strong
-            Name:
-          =credit.name
-        %span
-          %strong
-            APR
-          =credit.apr
-        %span
-          %strong
-            Maximum Line of Credit
-          =credit.line_max
+    %tr
+      %td
+        = link_to "#{credit.name}", credit_path(credit)
+      %td
+        #{credit.apr * 100}%
+      %td
+        $#{sprintf('%.2f', credit.line_max)}
+      %td
+        $#{sprintf('%.2f', credit.grand_totals)}
+
+%br
+%p
+  = link_to 'Add a New Line of Credit', new_credit_path
