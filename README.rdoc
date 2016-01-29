@@ -4,21 +4,21 @@ An exercise to step out of my normal, professional tech stack of Rails 3 on Mong
 -Postgres
 -MiniTest with Shoulda-matchers
 
-* Getting this up and running
+=====Getting this up and running
 in terminal: 
   -git clone git@github.com:theresaluu/line_of_credit_mini_test.git
   -cd line_of_credit_mini_test
   -bundle install
 
-* Database
+=====Database
 run postgres server
   -bundle exec rake db:create
   -bundle exec rake db:migrate
 
-* Run the test suite
+=====Run the test suite
 bundle exec guard
 
-Items left in this app I would like to accomplish and practice with 
+=====Items left in this app I would like to accomplish and practice with 
 [] Write and pass a test for exceeding the loan amounts
 [] UI styling with some sort of library
 [] Take out conditional rendering in the view- there is ruby in there and it is nasty
