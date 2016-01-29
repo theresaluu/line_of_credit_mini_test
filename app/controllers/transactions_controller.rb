@@ -2,10 +2,11 @@ class TransactionsController < ApplicationController
   def new
     @transaction = Transaction.new()
   end
+
   def create
-    @transaction = Transaction.new(transaction_params)
-    @transaction.save
-    redirect_to credit_path(@transaction.id)
+    @credit = Credit.find(params[:credit_id])
+    @transaction = @credit.transactions.create(transaction_params)
+    redirect_to credit_path(@credit.id)
   end
 
   private

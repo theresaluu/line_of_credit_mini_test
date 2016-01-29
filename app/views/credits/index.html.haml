@@ -1,9 +1,17 @@
 All Lines of Credit
-  %ul
-    =@credits.each do |credit|
+%ul
+  -@credits.each do |credit|
     %li
-      =credit.name
-      %br
-      =credit.apr
-      %br
-      =credit.line_max
+      %p
+        %span
+          %strong
+            Name:
+          =credit.name
+        %span
+          %strong
+            APR
+          =credit.apr
+        %span
+          %strong
+            Maximum Line of Credit
+          =credit.line_max

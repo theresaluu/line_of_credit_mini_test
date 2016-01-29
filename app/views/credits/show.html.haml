@@ -13,7 +13,7 @@
 %p
   Transactions
   %ul
-    =@transactions.each do |transaction|
+    -@transactions.each do |transaction|
       %li
         Amount
         =transaction.amount

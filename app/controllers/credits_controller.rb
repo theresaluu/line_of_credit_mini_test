@@ -9,8 +9,9 @@ class CreditsController < ApplicationController
 
   def create
     @credit = Credit.new(credit_params)
-    @credit.save
-    redirect_to @credit
+    if @credit.save
+      redirect_to @credit
+    end
   end
 
   def show
